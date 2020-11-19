@@ -4,6 +4,6 @@
 This Task is all about generating random pin with specified condition.
 
 Team: 
-  Parthiban 99002532 
-  Girish Sanjay Kumbar 99002511
-  Gaurav Das 99002597
+  Parthiban: 99002532 
+  Girish Sanjay Kumbar: 99002511
+  Gaurav Das: 99002597
