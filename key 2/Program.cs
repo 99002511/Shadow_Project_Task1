@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.IO;
 
@@ -218,6 +218,26 @@ namespace MyApplication
                 System.Environment.Exit(0);
             }
         }
+        public void Digi_special(string temp_data)
+        {
+            uint i;
+            if(uint.TryParse(temp_data, out i)==false)
+            {
+                Console.WriteLine("Invalid File Input");
+                System.Environment.Exit(0);
+            }
+        }
+    }
+    class Emptychecker
+    {
+        public void digitsEmpty(string s_digit)
+        {
+            if(string.IsNullOrEmpty(s_digit)==true)
+            {
+                Console.WriteLine("Empty File");
+                System.Environment.Exit(0);
+            }
+        }
     }
     /// <summary>
     /// This proram will generate a random number with given number of size.and with given conditions.
@@ -227,11 +247,13 @@ namespace MyApplication
 
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("C:\\inputs.txt");//Reading input from the file
+            StreamReader sr = new StreamReader("C:\\Users\\CTEA\\Documents\\inputs.txt");//Reading input from the file
+            var empty_digi_check = new Emptychecker();
             var digi_check = new Counts_Digits();//instance of Counts_Digit
             var key = new KeyGenerator();//instance of KeyGenerator()
             Console.WriteLine("The Size is: ");
             string str = sr.ReadLine();//Reading first line
+            empty_digi_check.digitsEmpty(str);
             int sizes = int.Parse(str);
             Console.WriteLine(sizes);
             var digi_r = new digits_twister();//instance of digits_twister
@@ -243,6 +265,8 @@ namespace MyApplication
                 var digi_one_rever = new rand_reverse();
                 Console.WriteLine("Digits 1 shouldn't start with: ");
                 str = sr.ReadLine();
+                empty_digi_check.digitsEmpty(str);
+                digi_check.Digi_special(str);
                 int digi_1 = int.Parse(str);
                 Console.WriteLine(digi_1);
                 array_one_rever = digi_one_rever.reverse_digiter(digi_1);//converting interger to ArrayList
@@ -253,6 +277,8 @@ namespace MyApplication
                 ArrayList array_two_rever = new ArrayList();
                 Console.WriteLine("Digits 2 shouldn't end with: ");
                 str = sr.ReadLine();
+                empty_digi_check.digitsEmpty(str);
+                digi_check.Digi_special(str);
                 int digi_2 = int.Parse(str);
                 Console.WriteLine(digi_2);
                 array_two_rever = digi_two_rever.reverse_digiter(digi_2);//converting interger to ArrayList
